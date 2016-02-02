@@ -20,4 +20,10 @@ router.delete('/api/users/:id', function* () {
 });
 
 
+router.get('/', function* () {
+    yield this.render('index', {
+        title: 'Hello, Koa.js!'
+    });
+})
+
 module.exports = router;
