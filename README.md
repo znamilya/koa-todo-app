@@ -1,3 +1,3 @@
-# Koa Start Kit
+# Koa Starter Kit
 
-simple start kit for Koa projects
+simple starter kit for Koa projects
