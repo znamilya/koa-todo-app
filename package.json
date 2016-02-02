@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/znamilya/koa-starter-kit#readme",
   "dependencies": {
+    "config": "^1.19.0",
     "koa": "^1.1.2",
     "koa-router": "^5.3.0"
   }
