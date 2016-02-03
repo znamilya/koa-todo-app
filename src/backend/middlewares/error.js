@@ -11,6 +11,7 @@ module.exports = function () {
             if (err.status) {
                 this.status = err.status;
                 this.body = err.message;
+                console.log(err.stack);
             } else {
                 this.status = 500;
                 this.body = http.STATUS_CODES[500];
