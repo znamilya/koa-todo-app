@@ -1,3 +1,1 @@
-# Koa Starter Kit
-
-simple starter kit for Koa projects
+# Koa Simple REST Api
