@@ -1,92 +1,50 @@
 'use strict';
 
-let http   = require('http');
-let router = require('koa-router')();
+let http      = require('http');
+let mongoose  = require('mongoose');
+let router    = require('koa-router')();
 let UserModel = require('../models/user');
 
 
-router.get('/users', function* () {
-    try {
-        let data = yield UserModel.find();
-
-        this.body = {
-            ok: true,
-            data: data
-        };
-    } catch (e) {
-        this.status = 404;
-        this.body = {
-            ok: false,
-            error: http.STATUS_CODES[404]
-        };
+router.param('userById', function* (id, next) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        this.throw(400);
     }
+
+    this.userById = yield UserModel.findById(id);
+
+    if (!this.userById) {
+        this.throw(404);
+    }
+
+    yield* next;
+})
+
+
+router.get('/users', function* () {
+    this.body =  yield UserModel.find({}).lean();
 });
 
 
-router.get('/users/:id', function* () {
-    try {
-        let data = yield UserModel.findById(this.params.id);
-
-        this.body = {
-            ok: true,
-            data: data
-        };
-    } catch (e) {
-        this.status = 404;
-        this.body = {
-            ok: false,
-            error: http.STATUS_CODES[404]
-        };
-    }
+router.get('/users/:userById', function* () {
+    this.body = this.userById.toObject();
 });
 
 
 router.post('/users', function* () {
-    let user = new UserModel(this.request.body);
+    let newUser = yield UserModel.create({
+        name: this.request.body.name,
+        email: this.request.body.email,
+    });
 
-    try {
-        let data = yield user.save();
-
-        this.body = {
-            ok: true,
-            data: data
-        }
-    } catch(e) {
-        this.body = {
-            ok: false,
-            error: e.message
-        };
-    }
-
+    this.body = newUser;
 });
 
 
-router.delete('/users/:id', function* () {
-    try {
-        let data = yield UserModel.findById(this.params.id).remove();
+router.delete('/users/:userById', function* () {
+    yield this.userById.remove();
 
-        /*
-            result.result:
-            {
-              "ok": 1,
-              "n": 0
-            }
-         */
-        if (data.result.n === 0) {
-            this.throw();
-        }
-
-        this.body = {
-            ok: true,
-            data: data
-        };
-    } catch (e) {
-        this.status = 404;
-        this.body = {
-            ok: false,
-            error: http.STATUS_CODES[404]
-        };
-    }
+    this.body = 'ok';
 });
 
 
