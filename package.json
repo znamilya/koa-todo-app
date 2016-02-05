@@ -1,25 +1,27 @@
 {
   "name": "koa-starter-kit",
   "version": "0.0.1",
-  "description": "Simple starter kit for Koa projects — Edit",
+  "description": "Simple todo-app with using Koa, MongoDB and React",
   "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/znamilya/koa-starter-kit.git"
+    "url": "https://github.com/znamilya/koa-todo-app.git"
   },
   "keywords": [
     "koa",
-    "starter-kit"
+    "todo",
+    "mongo",
+    "react"
   ],
   "author": "Ilya Znamensky",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/znamilya/koa-starter-kit/issues"
+    "url": "https://github.com/znamilya/koa-todo-app/issues"
   },
-  "homepage": "https://github.com/znamilya/koa-starter-kit#readme",
+  "homepage": "https://github.com/znamilya/koa-todo-app#readme",
   "dependencies": {
     "config": "^1.19.0",
     "jade": "^1.11.0",
