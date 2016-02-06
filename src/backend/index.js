@@ -16,7 +16,7 @@ let app = koa();
 
 app.keys = [config.get('secret')];
 // let db = mongoose.connect('mongodb://puper:123@ds055485.mongolab.com:55485/koa');
-let db = mongoose.connect('mongodb://localhost/koa');
+let db = mongoose.connect('mongodb://localhost/quotes');
 
 
 app.use(favicon());
@@ -27,6 +27,5 @@ app.use(error());
 app.use(session(app));
 app.use(bodyparser());
 app.use(router.routes());
-
 
 app.listen(3224);
