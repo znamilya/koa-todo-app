@@ -4,6 +4,7 @@
   "description": "Simple todo-app with using Koa, MongoDB and React",
   "main": "build/index.js",
   "scripts": {
+    "start": "node ./server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,7 +24,13 @@
   },
   "homepage": "https://github.com/znamilya/koa-todo-app#readme",
   "dependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.2",
+    "babel-preset-react": "^6.3.13",
     "config": "^1.19.0",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
     "jade": "^1.11.0",
     "koa": "^1.1.2",
     "koa-bodyparser": "^2.0.1",
@@ -34,6 +41,13 @@
     "koa-session": "^3.3.1",
     "koa-static": "^2.0.0",
     "mongoose": "^4.3.7",
-    "mongoose-unique-validator": "^0.6.2"
+    "mongoose-unique-validator": "^0.6.2",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-hot-loader": "^1.3.0",
+    "style-loader": "^0.13.0",
+    "stylus-loader": "^1.5.1",
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
   }
 }

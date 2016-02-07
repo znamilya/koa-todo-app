@@ -6,5 +6,5 @@ const path = require('path');
 module.exports = {
     secret: 'secret_phrase',
     root: process.cwd(),
-    templatePath: path.join(process.cwd(), 'src', 'backend', 'templates'),
+    templatePath: path.join(process.cwd(), 'server', 'templates'),
 };
