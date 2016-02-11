@@ -1,9 +1,19 @@
 'use strict';
 
-import React        from 'react';
-import ReactDOM     from 'react-dom';
+import React            from 'react';
+import ReactDOM         from 'react-dom';
+import { Provider }     from 'react-redux'
 
-import App          from 'containers/App/App';
+import configureStore   from 'store/configureStore';
+import App              from 'containers/App/App';
 
 
-ReactDOM.render(<App />, document.getElementById('app'));
+const store = configureStore();
+
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App /> 
+    </Provider>,
+    document.getElementById('app')
+);

@@ -40,7 +40,7 @@ module.exports = {
             {
                 test: /\.jsx$/,
                 include: appPath,
-                loaders: ['react-hot-loader', 'babel-loader?presets[]=react,presets[]=es2015']
+                loaders: ['react-hot-loader', 'babel-loader?presets[]=react,presets[]=es2015,presets[]=stage-0']
             },
             {
                 test: /\.js$/,
