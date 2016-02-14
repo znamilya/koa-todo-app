@@ -10,7 +10,19 @@ import * as quotesActions       from 'actions/quotes';
 import './App.styl';
 
 
-
+@connect(
+    (state, props) => {
+        return {
+            quotes: state.quotes,
+        }
+    }, 
+    (dispatch) => {
+        return {
+            loadQuotes:  bindActionCreators(quotesActions.load, dispatch),
+            deleteQuote: bindActionCreators(quotesActions.deleteOne, dispatch),
+        }
+    }
+)
 class App extends React.Component {
 
     /* ------------------------------------------------------------------------------------------ */
@@ -28,7 +40,7 @@ class App extends React.Component {
             <div className="app">
                 <h1 className="app__title">Todo</h1>
                 <div className="app__body">
-                    <Quotes items={this.props.quotes} />
+                    <Quotes items={this.props.quotes} onDeleteItem={this.props.deleteQuote} />
                 </div>
             </div>
         )
@@ -36,12 +48,4 @@ class App extends React.Component {
 }
 
 
-export default connect((state, props) => {
-    return {
-        quotes: state.quotes,
-    }
-}, dispatch => {
-    return {
-        loadQuotes: bindActionCreators(quotesActions.load, dispatch)
-    }
-})(App);
+export default App;
