@@ -79,7 +79,7 @@ class FormAdd extends React.Component {
                 <div>
                     <input type="text" name="source" ref="source" />
                 </div>
-                <button>Add</button>
+                <button className="topcoat-button">Add</button>
             </form>
         );
     }
