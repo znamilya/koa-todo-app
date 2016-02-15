@@ -42,7 +42,7 @@ router.post('/', function* () {
     }
 
     if (this.request.body.source) {
-        newQuoteData.source = this.request.body.author;
+        newQuoteData.source = this.request.body.source;
     }
 
     this.body = yield QuoteModel.create(newQuoteData);

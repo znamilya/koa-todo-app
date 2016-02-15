@@ -6,6 +6,12 @@ export default function (state = [], action) {
         case constants.FETCH:
             return action.data;
 
+        case constants.SAVE_NEW:
+            return [
+                ...state,
+                action.data,
+            ];
+
         default:
             return state;
     }

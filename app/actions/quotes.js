@@ -21,6 +21,27 @@ export function load(params) {
 
 
 /**
+ * Сохранить новую цитату
+ * 
+ * @param  {Object} params        Параметры
+ * @param  {Object} params.text   Текст цитаты
+ * @param  {Object} params.author Автор
+ * @param  {Object} params.source Источник
+ * @return {Object}
+ */
+export function saveNewOne(params) {
+    if (!params.text) {
+        throw new Error('Quote must contains any text!');
+    }
+
+    return {
+        type: constants.SAVE_NEW,
+        promise: axios.post(`/api/quotes/`, params),
+    }
+}
+
+
+/**
  * Удалить одну цитату
  * 
  * @param  {Number} id id цитаты которую нужно удаоить
