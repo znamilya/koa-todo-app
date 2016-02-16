@@ -7,7 +7,7 @@ let apiRouter = require('./api/index');
 
 router.use('/api', apiRouter.routes());
 
-router.get('/', function* () {
+router.get('/*', function* () {
     this.body = yield this.render('index.jade', {
         title: 'Hello, Quotes!'
     });
