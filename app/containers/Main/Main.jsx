@@ -4,25 +4,23 @@ import React                    from 'react';
 import { connect }              from 'react-redux';
 import { bindActionCreators }   from 'redux';
 
-import Header                   from 'components/Header/Header';
-import FormAdd                  from 'components/FormAdd/FormAdd';
+import FormRegistration         from 'components/FormRegistration/FormRegistration';
+import Greeting                 from 'components/Greeting/Greeting';
 import Quotes                   from 'components/Quotes/Quotes';
+import FormAdd                  from 'components/FormAdd/FormAdd';
 import * as quotesActions       from 'actions/quotes';
-
-import './App.styl';
 
 
 @connect(
     (state, props) => {
         return {
+            user:   state.user,
             quotes: state.quotes,
         }
     }, 
     (dispatch) => {
         return {
-            loadQuotes:   bindActionCreators(quotesActions.load, dispatch),
-            deleteQuote:  bindActionCreators(quotesActions.deleteOne, dispatch),
-            saveNewQuote: bindActionCreators(quotesActions.saveNewOne, dispatch),
+            loadQuotes: bindActionCreators(quotesActions.load, dispatch),
         }
     }
 )
@@ -32,27 +30,31 @@ class App extends React.Component {
     /* REACT                                                                                      */
     /* ------------------------------------------------------------------------------------------ */
     componentWillMount() {
-        this.props.loadQuotes();
+        if (this.props.user) {
+            this.props.loadQuotes();
+        }
     }
 
     /* ------------------------------------------------------------------------------------------ */
     /* RENDER                                                                                     */
     /* ------------------------------------------------------------------------------------------ */
-                        // <FormAdd onSubmit={this.props.saveNewQuote} />
-                        // <Quotes items={this.props.quotes} onDeleteItem={this.props.deleteQuote} />
     render() {
+        let rootElem;
+
+        if (this.props.user) {
+            return <Quotes items={this.props.quotes} />;
+        }
+
         return (
-            <div className="app">
-                <div className="app__header">
-                    <Header />
+            <div>
+                <div className="row">
+                    <Greeting />
                 </div>
-                <div className="app__body">
-                    <div className="container">
-                        {this.props.children}
-                    </div>
+                <div className="row">
+                    <FormRegistration />
                 </div>
             </div>
-        )
+        );
     }
 }
 

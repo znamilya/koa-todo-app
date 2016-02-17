@@ -43,8 +43,7 @@
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",
     "react-router": "^2.0.0",
-    "redux": "^3.3.1",
-    "topcoat": "^0.7.5"
+    "redux": "^3.3.1"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
